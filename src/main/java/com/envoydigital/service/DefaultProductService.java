@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import com.envoydigital.forms.ProductEntryForm;
 import com.envoydigital.model.Product;
 
 @Component("productService")
@@ -31,5 +32,18 @@ public class DefaultProductService implements ProductService {
 	public Product save(Product product) {
 		return productRepository.save(product);
 	}
+
+	@SuppressWarnings("null")
+	@Override
+	public Product saveProductFromEntry(ProductEntryForm productEntry) {
+		Assert.notNull(productEntry.getProductId(), "Id Must not be Null");
+		Product product = null;
+		product.setId(Long.parseLong(productEntry.getProductId()));
+		product.setDescription(productEntry.getProductDescription());
+		product.setName(productEntry.getProductName());
+		return productRepository.save(product);
+	}
+
+
 
 }

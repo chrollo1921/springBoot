@@ -8,7 +8,7 @@
 <title>Product List Page</title>
 </head>
 <body>
-
+	<div align="center">
 	<h1>Product List Page:</h1>
 	<c:if test="${not empty products}">
 
@@ -18,18 +18,22 @@
 					<th>ID</th>
 					<th>Name</th>
 					<th>Description</th>
+					<th>Currency</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${products}" var="product" varStatus="status">
 					<tr>
-						<td>${product.id}</td>
+						<td><a href="/product/edit/?productId=${product.id}">${product.id}</a></td>
 						<td>${product.name}</td>
 						<td>${product.description}</td>
+						<td>${price.amount}</td>
+						
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</c:if>
+	</div>
 </body>
 </html>

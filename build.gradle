@@ -6,6 +6,11 @@ plugins {
 	id 'idea'
 }
 
+dependencyManagement {
+  imports {
+    mavenBom 'org.springframework.session:spring-session-bom:2021.1.1'
+  }
+}
 group = 'com.envoydigital'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -31,6 +36,7 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	//implementation 'org.springframework.session:spring-session-data-redis'
 }
 
 test {
