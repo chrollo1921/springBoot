@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Product {
 
@@ -27,6 +29,7 @@ public class Product {
 
 	@OneToMany(mappedBy = "product")
 	@MapKey(name = "currency")
+	@JsonBackReference(value = "product-price")
 	private Map<Currency, Price> prices = new HashMap<>();
 
 	public Long getId() {
